@@ -125,6 +125,8 @@ MonoBehaviour:
   m_TimeToHitTarget: 1
   m_IsStraight: 1
   m_StabSound: {fileID: 8300000, guid: d1a88d973762664489baf80837f5a6dd, type: 3}
+  m_HitSFX: {fileID: 2038219264036673446, guid: 82e263d1a2e47b2449a35346d62a4c18,
+    type: 3}
 --- !u!50 &5134296767146756572
 Rigidbody2D:
   serializedVersion: 4

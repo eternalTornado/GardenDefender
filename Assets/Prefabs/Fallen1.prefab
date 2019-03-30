@@ -207,4 +207,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Cost: 100
+  m_RechargeTime: 10
   m_HiredSound: {fileID: 8300000, guid: e7e7dafd78ea9c849bf5b6dac0fc160e, type: 3}

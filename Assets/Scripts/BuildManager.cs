@@ -9,6 +9,8 @@ public class BuildManager : MonoBehaviour
     //private attribues
     private GameObject m_DefenderToPlace;
     private ShopButton m_CurrentShopButton;
+
+    public bool m_IsBuildable;
     void Awake()
     {
         if(instance == null)
@@ -22,6 +24,7 @@ public class BuildManager : MonoBehaviour
     }
     void Start()
     {
+        m_IsBuildable = true;
         m_DefenderToPlace = null;
         m_CurrentShopButton = null;
     }
@@ -41,4 +44,5 @@ public class BuildManager : MonoBehaviour
     {
         m_CurrentShopButton = shopButton;
     }
+
 }

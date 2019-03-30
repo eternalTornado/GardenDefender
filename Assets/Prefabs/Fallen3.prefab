@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Cost: 50
+  m_RechargeTime: 10
   m_HiredSound: {fileID: 8300000, guid: e7e7dafd78ea9c849bf5b6dac0fc160e, type: 3}
 --- !u!114 &8950353904619123141
 MonoBehaviour:
@@ -141,7 +142,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 4}
+  m_Size: {x: 3, y: 4}
   m_EdgeRadius: 0
 --- !u!95 &8950353904619123143
 Animator:

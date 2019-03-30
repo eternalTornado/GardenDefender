@@ -17,6 +17,7 @@ public class LoseTrigger : MonoBehaviour
             m_LoseCanvas.SetActive(true);
             Time.timeScale = 0f;
             BuildManager.instance.SetDefenderToPlace(null);
+            BuildManager.instance.m_IsBuildable = false;
         }
     }
 }

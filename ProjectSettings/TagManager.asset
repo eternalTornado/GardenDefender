@@ -7,6 +7,7 @@ TagManager:
   - Defender
   - Enemy
   - DefenderProjectile
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -49,4 +50,7 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 743917711
+    locked: 0
+  - name: SFX
+    uniqueID: 3090202799
     locked: 0

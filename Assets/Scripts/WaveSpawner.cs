@@ -11,10 +11,11 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] WaveConfig m_Wave;
     [SerializeField] float m_TimeBeforeNextWave = 15f;
     
-    private int index;
+    private int holyShite;
     private List<Transform> m_SpawnPoint;
     private int randomFactor;
     private int m_NumOfEnemiesOnField;
+
 
     private float m_TimerNextWave;
     // Start is called before the first frame update
@@ -23,7 +24,7 @@ public class WaveSpawner : MonoBehaviour
         m_TimerNextWave = 0f;
         m_WinCanvas.SetActive(false);
         Time.timeScale = 1f;
-        index = 0;
+        holyShite = 0;
         m_SpawnPoint = new List<Transform>();
         foreach(Transform point in m_SpawnField.transform)
         {
@@ -49,30 +50,47 @@ public class WaveSpawner : MonoBehaviour
         m_NumOfEnemiesOnField = GameObject.FindGameObjectsWithTag("Enemy").Length;
         if (m_NumOfEnemiesOnField <= 0)
         {
-            index++;
-            if(index > 10)
+            holyShite++;
+            if (holyShite > 10 && !m_Wave.IsEndlessRound())
             {
                 m_WinCanvas.SetActive(true);
                 CancelInvoke("UpdateNumOfEnemies");
                 BuildManager.instance.SetDefenderToPlace(null);
+                BuildManager.instance.m_IsBuildable = false;
                 //Do we really need to stop the time ?
                 //Time.timeScale = 0f;
             }
             else
             {
-                m_Wave.UpdateWave(index);
+                m_Wave.UpdateWave(holyShite);
                 StartCoroutine(SpawnEnemies());
             }
         }
     }
     IEnumerator SpawnEnemies()
     {
-        for(int index = 0; index<=m_Wave.GetNumOfEnemies(); index++)
+        //Prevent random from generating same results
+        List<int> randomList = new List<int>();
+        int randomPoint;
+        int randomEnemy;
+        for(int i = 0; i<m_Wave.GetNumOfEnemies(); i++)
         {
-            int randomPoint = Random.Range(0, m_SpawnPoint.Count);
-            int randomEnemy = Random.Range(0, m_Wave.GetCurrentWaveList().Count);
+            randomPoint = Random.Range(0, m_SpawnPoint.Count);
+            if (randomList.Contains(randomPoint))
+            {
+                randomPoint = Random.Range(0, m_SpawnPoint.Count);
+            }
+            randomList.Add(randomPoint);
+            if (randomList.Count >= m_SpawnPoint.Count)
+                randomList.Clear();
+            randomEnemy = Random.Range(0, m_Wave.GetCurrentWaveList().Count);
             GameObject enemy = GameObject.Instantiate(m_Wave.GetCurrentWaveList()[randomEnemy], m_SpawnPoint[randomPoint].position, Quaternion.identity);
+            yield return new WaitForSeconds(0.5f);
         }
+        yield return null;
+    }
+    IEnumerator SpawnEndlessEnemies()
+    {
         yield return null;
     }
 }

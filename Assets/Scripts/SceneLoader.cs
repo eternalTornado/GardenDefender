@@ -22,6 +22,10 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    public void LoadMainMenuScene()
+    {
+        SceneManager.LoadScene(1);
+    }
     private void LoadNextSceneDelay(float delayTime)
     {
         StartCoroutine(LoadNextSceneWithDelay(delayTime));

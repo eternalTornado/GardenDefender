@@ -206,5 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44dee08dbc2098146b607248f484aa84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cost: 100
+  m_Cost: 150
+  m_RechargeTime: 20
   m_HiredSound: {fileID: 8300000, guid: e7e7dafd78ea9c849bf5b6dac0fc160e, type: 3}

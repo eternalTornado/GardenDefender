@@ -6,8 +6,9 @@ using UnityEngine;
 public class WaveConfig : ScriptableObject
 {
     [SerializeField] float m_StartTime = 18f;
-    [SerializeField] float m_RandomFactor = 3f;
+    [SerializeField] int m_RandomFactor = 3;
     [SerializeField] GameObject[] m_EnemyPrefabs;
+    [SerializeField] bool m_IsEndlessRound;
 
     private int m_NumOfEnemies = 0;
     private float m_Progress = 0f;
@@ -19,33 +20,38 @@ public class WaveConfig : ScriptableObject
         {
             case 1:
                 m_NumOfEnemies = 1;
+                Debug.Log("Number of Enemies: " + m_NumOfEnemies);
                 m_CurrentWaveEnemyList.Clear();
                 m_CurrentWaveEnemyList.Add(m_EnemyPrefabs[0]);
                 break;
             case 2:
                 m_NumOfEnemies = 1;
+                Debug.Log("Number of Enemies: " + m_NumOfEnemies);
                 m_CurrentWaveEnemyList.Clear();
                 m_CurrentWaveEnemyList.Add(m_EnemyPrefabs[0]);
                 break;
             case 3:
                 m_NumOfEnemies = 2;
+                Debug.Log("Number of Enemies: " + m_NumOfEnemies);
                 m_CurrentWaveEnemyList.Clear();
                 m_CurrentWaveEnemyList.Add(m_EnemyPrefabs[0]);
                 break;
             //From case 4, everything should be randomized
             case 4:
-                m_NumOfEnemies = (int)Random.Range(2, 2+m_RandomFactor);
+                m_NumOfEnemies = Random.Range(2, 2+m_RandomFactor);
+                Debug.Log("Number of Enemies: " + m_NumOfEnemies);
                 m_CurrentWaveEnemyList.Clear();
-                numOfEnemySpecies = Random.Range(0, m_EnemyPrefabs.Length - 1);
+                numOfEnemySpecies = m_EnemyPrefabs.Length > 1 ? Random.Range(0, m_EnemyPrefabs.Length - 1) : 1;
                 for (int i = 0; i < numOfEnemySpecies; i++)
                 {
                     m_CurrentWaveEnemyList.Add(m_EnemyPrefabs[i]);
                 }
                 break;
             case 5:
-                m_NumOfEnemies = (int)Random.Range(1, 1 + m_RandomFactor);
+                m_NumOfEnemies = Random.Range(1, 1 + m_RandomFactor);
+                Debug.Log("Number of Enemies: " + m_NumOfEnemies);
                 m_CurrentWaveEnemyList.Clear();
-                numOfEnemySpecies = Random.Range(0, m_EnemyPrefabs.Length - 1);
+                numOfEnemySpecies = m_EnemyPrefabs.Length > 1 ? Random.Range(0, m_EnemyPrefabs.Length - 1) : 1;
                 for (int i = 0; i < numOfEnemySpecies; i++)
                 {
                     m_CurrentWaveEnemyList.Add(m_EnemyPrefabs[i]);
@@ -53,8 +59,9 @@ public class WaveConfig : ScriptableObject
                 break;
             case 6:
                 m_NumOfEnemies = (int)Random.Range(2, 2+m_RandomFactor);
+                Debug.Log("Number of Enemies: " + m_NumOfEnemies);
                 m_CurrentWaveEnemyList.Clear();
-                numOfEnemySpecies = Random.Range(0, m_EnemyPrefabs.Length - 1);
+                numOfEnemySpecies = m_EnemyPrefabs.Length > 1 ? Random.Range(0, m_EnemyPrefabs.Length - 1) : 1;
                 for (int i = 0; i < numOfEnemySpecies; i++)
                 {
                     m_CurrentWaveEnemyList.Add(m_EnemyPrefabs[i]);
@@ -63,11 +70,13 @@ public class WaveConfig : ScriptableObject
             //Make sure to spawn the most power evemy this wave
             case 7:
                 m_NumOfEnemies = 3;
+                Debug.Log("Number of Enemies: " + m_NumOfEnemies);
                 m_CurrentWaveEnemyList.Clear();
                 m_CurrentWaveEnemyList.Add(m_EnemyPrefabs[m_EnemyPrefabs.Length-1]);
                 break;
             case 8:
                 m_NumOfEnemies = (int)Random.Range(3, 3+m_RandomFactor);
+                Debug.Log("Number of Enemies: " + m_NumOfEnemies);
                 m_CurrentWaveEnemyList.Clear();
                 for(int i = 0; i < m_EnemyPrefabs.Length; i++)
                 {
@@ -76,6 +85,7 @@ public class WaveConfig : ScriptableObject
                 break;
             case 9:
                 m_NumOfEnemies = 5;
+                Debug.Log("Number of Enemies: " + m_NumOfEnemies);
                 m_CurrentWaveEnemyList.Clear();
                 for (int i = 0; i < m_EnemyPrefabs.Length; i++)
                 {
@@ -84,6 +94,7 @@ public class WaveConfig : ScriptableObject
                 break;
             case 10:
                 m_NumOfEnemies = 10;
+                Debug.Log("Number of Enemies: " + m_NumOfEnemies);
                 m_CurrentWaveEnemyList.Clear();
                 for (int i = 0; i < m_EnemyPrefabs.Length; i++)
                 {
@@ -91,6 +102,13 @@ public class WaveConfig : ScriptableObject
                 }
                 break;
             default:
+                m_NumOfEnemies += 2;
+                Debug.Log("Number of Enemies: " + m_NumOfEnemies);
+                m_CurrentWaveEnemyList.Clear();
+                for (int i = 0; i < m_EnemyPrefabs.Length; i++)
+                {
+                    m_CurrentWaveEnemyList.Add(m_EnemyPrefabs[i]);
+                }
                 break;
         }
     }
@@ -113,5 +131,9 @@ public class WaveConfig : ScriptableObject
     public List<GameObject> GetCurrentWaveList()
     {
         return m_CurrentWaveEnemyList;
+    }
+    public bool IsEndlessRound()
+    {
+        return m_IsEndlessRound;
     }
 }

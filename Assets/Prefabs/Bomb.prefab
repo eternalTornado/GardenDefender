@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6157349685678226023}
   - component: {fileID: 6157349685678226020}
   - component: {fileID: 6157349685678226021}
+  - component: {fileID: 6157349686470234731}
   m_Layer: 8
   m_Name: Bomb
   m_TagString: Defender
@@ -118,6 +119,21 @@ MonoBehaviour:
   m_ExplosionSound: {fileID: 8300000, guid: f9f5739798882324290445a48126f0b6, type: 3}
   m_TimeBeforeExplode: 2
   m_ExplodeRange: 1.5
+--- !u!114 &6157349686470234731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6157349685678226018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44dee08dbc2098146b607248f484aa84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Cost: 200
+  m_RechargeTime: 30
+  m_HiredSound: {fileID: 8300000, guid: e7e7dafd78ea9c849bf5b6dac0fc160e, type: 3}
 --- !u!1 &6157349687170681466
 GameObject:
   m_ObjectHideFlags: 0

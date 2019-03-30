@@ -49,6 +49,8 @@ public class Node : MonoBehaviour
         this.transform.position = new Vector3(transform.position.x, transform.position.y, 1f);
         ResourceManager.instance.UpdateResourceText(-defenderCost);
         BuildManager.instance.GetCurrentShopButton().StartRecharge();
+
+        BuildManager.instance.SetDefenderToPlace(null);
     }
     private void UpdateDefenderStatus()
     {

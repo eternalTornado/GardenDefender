@@ -8,13 +8,17 @@ public class Projectile : MonoBehaviour
     [SerializeField] float m_TimeToHitTarget = 1f;
     [SerializeField] bool m_IsStraight;
     [SerializeField] AudioClip m_StabSound;
+    [SerializeField] GameObject m_HitSFX;
 
     private Rigidbody2D m_Rigidbody2D;
     private GameObject m_Target;
     private Vector2 predictedVelocity;
+
+    private float m_LineInstatiate;
     // Start is called before the first frame update
     void Start()
     {
+        m_LineInstatiate = this.transform.parent.transform.position.y;
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         predictedVelocity = GetVelocity(this.gameObject, m_Target, m_TimeToHitTarget);
         if (!m_IsStraight)
@@ -62,5 +66,13 @@ public class Projectile : MonoBehaviour
     public AudioClip GetProjectileSoundFX()
     {
         return m_StabSound;
+    }
+    public GameObject GetProjectileHitSFX()
+    {
+        return m_HitSFX;
+    }
+    public float GetLineInstantiate()
+    {
+        return m_LineInstatiate;
     }
 }

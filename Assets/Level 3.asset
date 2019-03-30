@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a20df58b47c6e42903f20d8e1603a0, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: 
-  m_StartTime: 1
+  m_StartTime: 18
   m_RandomFactor: 3
   m_EnemyPrefabs:
   - {fileID: 659451298068159205, guid: 23b4fc7353244ca4cbffe6452ae55148, type: 3}

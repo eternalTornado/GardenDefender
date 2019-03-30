@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GoldCoinPrefab: {fileID: 972350098425050037, guid: f5bc23ae9bbd39b4fabc92da25279b04,
     type: 3}
-  m_IncomeRate: 30
+  m_IncomeRate: 15
   m_CurrencyPerTime: 25
   m_RandomFactor: 5
 --- !u!114 &23131335977047226
@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Cost: 50
+  m_RechargeTime: 10
   m_HiredSound: {fileID: 8300000, guid: 09e5259479ad4f94a9732b28298d5ba0, type: 3}
 --- !u!114 &237997794941170791
 MonoBehaviour:
